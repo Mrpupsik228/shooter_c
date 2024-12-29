@@ -26,24 +26,24 @@ The C compiler identification is MSVC, found in "D:/!!! WORK C/game/cmake-build-
 Determining if the C compiler works passed with the following output:
 Change Dir: D:/!!! WORK C/game/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_86c7a\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_86c7a.dir\build.make /nologo -L                  CMakeFiles\cmTC_86c7a.dir\build
-Building C object CMakeFiles/cmTC_86c7a.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nm58E6.tmp
+Run Build Command(s):nmake /nologo cmTC_8e3c3\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_8e3c3.dir\build.make /nologo -L                  CMakeFiles\cmTC_8e3c3.dir\build
+Building C object CMakeFiles/cmTC_8e3c3.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nm65D.tmp
 testCCompiler.c
-Linking C executable cmTC_86c7a.exe
-	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_86c7a.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_86c7a.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nm5A9C.tmp
+Linking C executable cmTC_8e3c3.exe
+	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_8e3c3.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_8e3c3.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nm6CB.tmp
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/!!! WORK C/game/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_07fb9\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_07fb9.dir\build.make /nologo -L                  CMakeFiles\cmTC_07fb9.dir\build
-Building C object CMakeFiles/cmTC_07fb9.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nm5D99.tmp
+Run Build Command(s):nmake /nologo cmTC_c3872\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_c3872.dir\build.make /nologo -L                  CMakeFiles\cmTC_c3872.dir\build
+Building C object CMakeFiles/cmTC_c3872.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nmAA3.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_07fb9.exe
-	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_07fb9.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_07fb9.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nm5E75.tmp
+Linking C executable cmTC_c3872.exe
+	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_c3872.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_c3872.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nmC2A.tmp
 
 
 

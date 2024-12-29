@@ -24,7 +24,7 @@
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="D:/!!! WORK C/game/SDL2-devel-2.30.10-VC/SDL2-2.30.10/include"/>
+					<Add directory="D:/!!! WORK C/game/SDL2-2.30.10/include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"/>
@@ -46,7 +46,7 @@
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="D:/!!! WORK C/game/SDL2-devel-2.30.10-VC/SDL2-2.30.10/include"/>
+					<Add directory="D:/!!! WORK C/game/SDL2-2.30.10/include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"/>

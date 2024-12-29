@@ -8,6 +8,12 @@ unset(game CACHE)
 # Шлях до SDL2
 set(SDL2_PATH "${CMAKE_SOURCE_DIR}/SDL2-2.30.10")
 
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(SDL2_LIB_PATH "${SDL2_PATH}/lib/x64")
+else()
+    set(SDL2_LIB_PATH "${SDL2_PATH}/lib/x86")
+endif()
+
 add_executable(${PROJECT_NAME}
         main.c
         )
@@ -18,14 +24,24 @@ include_directories(
 )
 
 # Лінкуємо бібліотеки (x64 версія, оскільки бачу що у вас є папка x64)
+#target_link_libraries(${PROJECT_NAME}
+#        "${SDL2_PATH}/lib/x86/SDL2.lib"
+#        "${SDL2_PATH}/lib/x86/SDL2main.lib"
+#        )
 target_link_libraries(${PROJECT_NAME}
-        "${SDL2_PATH}/lib/x86/SDL2.lib"
-        "${SDL2_PATH}/lib/x86/SDL2main.lib"
+        "${SDL2_LIB_PATH}/SDL2.lib"
+        "${SDL2_LIB_PATH}/SDL2main.lib"
         )
 
+
+
 # Копіюємо DLL
-if(EXISTS "${SDL2_PATH}/lib/x86/SDL2.dll")
-    file(COPY "${SDL2_PATH}/lib/x86/SDL2.dll"
+#if(EXISTS "${SDL2_PATH}/lib/x86/SDL2.dll")
+#    file(COPY "${SDL2_PATH}/lib/x86/SDL2.dll"
+#            DESTINATION ${CMAKE_BINARY_DIR})
+#endif()
+
+if(EXISTS "${SDL2_LIB_PATH}/SDL2.dll")
+    file(COPY "${SDL2_LIB_PATH}/SDL2.dll"
             DESTINATION ${CMAKE_BINARY_DIR})
 endif()
-

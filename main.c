@@ -45,8 +45,6 @@ int main(int argc, const char * argv[]) {
         fprintf(stderr, "SDL initialization failed: %s\n", SDL_GetError());
         return 1;
     }
-
-    // Створення вікна
     SDL_Window *window = SDL_CreateWindow("Shooter",
                                           SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                           WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
@@ -57,7 +55,6 @@ int main(int argc, const char * argv[]) {
         return 1;
     }
 
-    // Створення рендерера
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == NULL) {
         fprintf(stderr, "Renderer creation failed: %s\n", SDL_GetError());
@@ -66,11 +63,9 @@ int main(int argc, const char * argv[]) {
         return 1;
     }
 
-    // Головний цикл
     SDL_Event event;
     int running = 1;
     while (running) {
-        // Обробка подій
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
