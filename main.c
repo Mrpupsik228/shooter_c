@@ -1,37 +1,3 @@
-//
-// Created by roman on 27.12.2024.
-//
-//#include <SDL2/SDL.h>
-
-/*#include "SDL.h"
-#include <stdio.h>
-#include <string.h>
-//#include "SDL2_image.dll"
-
-const int WIDTH = 500;
-const int HEIGHT = 500;
-
-
-int main(int argc, const char * argv[]) {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0 ) {
-        fprintf(stderr, "----------------Failed-------------- s% \n", SDL_GetError());
-        exit(1);
-
-    }
-
-    SDL_Window *window = SDL_CreateWindow("Shooter",
-            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-    SDL_Event event;
-    while (SDL_WaitEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-            break;
-        }
-    }
-
-    SDL_Quit();
-    return 0;
-};*/
-
 #include "SDL.h"
 #include <stdio.h>
 #include <string.h>
@@ -41,13 +7,49 @@ const int WIDTH = 500;
 const int HEIGHT = 500;
 const int HERO_WIDTH = 20;
 const int HERO_HEIGHT = 50;
+const int HERO_SPEED = 120;
+const int ENEMY_WIDTH = 40;
+const int ENEMY_HEIGHT = 20;
+const int ENEMY_SPEED = 80;
+
+
+typedef struct Enemy {
+    float x;
+    float y;
+    float xSpeed;
+    float ySpeed;
+    int width;
+    int height;
+} Enemy;
+
+
+typedef struct Rocket {
+    int score;
+    float xPos;
+} Rocket;
+
+
+
+
+Enemy enemy;
+Enemy enemy1;
+Rocket rocket;
+
+Rocket MakeRocket(void);
+void UpdateRocket(float elapsed);
+void RenderRocket(void);
+
+
+Enemy MakeEnemy(int xPos, int yPos);
+void UpdateEnemy(Enemy *enemy, float elapsed);
+void RenderEnemy(Enemy *enemy);
+
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 bool Initialize(void);
-void Shutdown(void);
 void Update(float);
-
+void Shutdown(void);
 
 
 int main(int argc, const char * argv[]) {
@@ -55,13 +57,6 @@ int main(int argc, const char * argv[]) {
     if (!Initialize()) {
         exit(1);
     }
-
-
-
-
-
-
-
 
     Uint32 lastTick = SDL_GetTicks();
 
@@ -78,8 +73,6 @@ int main(int argc, const char * argv[]) {
         float elapsed = diff / 1000.0f;
         Update(elapsed);
         lastTick = curTick;
-
-
     }
 
     Shutdown();
@@ -106,6 +99,9 @@ bool Initialize(void) {
             SDL_Quit();
             return false;
         }
+
+        rocket = MakeRocket();
+        enemy = MakeEnemy(100,200);
     return true;
 }
 
@@ -124,11 +120,81 @@ void Update(float elapsed) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    SDL_SetRenderDrawColor(renderer, 255,255,255,255);
-    SDL_Rect rect = {.x = WIDTH / 2 - HERO_WIDTH/2,
-            .y = HEIGHT-HERO_HEIGHT,
-            .w = HERO_WIDTH,
-            .h = HERO_HEIGHT,};
-    SDL_RenderFillRect(renderer, &rect);
+    UpdateEnemy(&enemy, elapsed);
+    RenderEnemy(&enemy);
+
+    UpdateRocket(elapsed);
+    RenderRocket();
+
     SDL_RenderPresent(renderer);
 }
+
+Enemy MakeEnemy(int xPos, int yPos){
+    Enemy enemy= {
+            .x = xPos,
+            .y = yPos,
+            .width = ENEMY_WIDTH,
+            .height = ENEMY_HEIGHT,
+            .xSpeed = ENEMY_SPEED,
+            .ySpeed = ENEMY_SPEED/4
+    };
+    return enemy;
+};
+
+void RenderEnemy(Enemy *enemy) {
+    int width = enemy->width;
+    int height = enemy->height;
+    SDL_Rect rect = {
+        .x = enemy->x-width/2,
+        .y = enemy->y,
+        .w = width,
+        .h = height,
+    };
+    SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+    SDL_RenderFillRect(renderer, &rect);
+}
+
+
+void UpdateEnemy(Enemy *enemy, float elapsed) {
+    enemy->x += enemy->xSpeed * elapsed;
+    enemy->y += enemy->ySpeed * elapsed;
+    if (enemy->x > WIDTH-enemy->width) {
+        enemy->xSpeed = -fabs(enemy->xSpeed);
+    }
+    if  (enemy->x < 0) {
+        enemy->xSpeed = fabs(enemy->xSpeed);
+    }
+    if (enemy->y > HEIGHT) {
+        enemy->y = -20;
+    }
+}
+
+Rocket MakeRocket(void) {
+    Rocket rocket = {
+            .xPos = WIDTH/2,
+    };
+    return rocket;
+};
+void UpdateRocket(float elapsed){
+    const Uint8 *keyboardState = SDL_GetKeyboardState(NULL);
+    if (keyboardState[SDL_SCANCODE_D]) {
+        if (rocket.xPos < (WIDTH)) {
+            rocket.xPos+=HERO_SPEED * elapsed;
+        };
+    };
+    if (keyboardState[SDL_SCANCODE_A]) {
+        if (rocket.xPos > 0+HERO_WIDTH) {
+            rocket.xPos-=HERO_SPEED * elapsed;
+        };
+    };
+};
+void RenderRocket(void) {
+    SDL_SetRenderDrawColor(renderer, 0,125,125,255);
+    SDL_Rect rocketRect = {
+            .x = (int)(rocket.xPos) - HERO_WIDTH,
+            .y = HEIGHT - HERO_HEIGHT,
+            .w = HERO_WIDTH,
+            .h = HERO_HEIGHT,
+    };
+    SDL_RenderFillRect(renderer, &rocketRect);
+};

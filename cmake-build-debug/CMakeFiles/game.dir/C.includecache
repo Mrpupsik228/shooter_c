@@ -767,14 +767,12 @@ close_code.h
 ../SDL2-2.30.10/include/close_code.h
 
 D:/!!! WORK C/game/main.c
-stdio.h
--
-string.h
--
 SDL.h
 D:/!!! WORK C/game/SDL.h
 stdio.h
 -
 string.h
+-
+stdbool.h
 -
 
