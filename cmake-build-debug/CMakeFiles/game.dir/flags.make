@@ -6,5 +6,5 @@ C_FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd
 
 C_DEFINES = 
 
-C_INCLUDES = -I"D:\!!! WORK C\game\SDL2-2.30.10\include" 
+C_INCLUDES = -I"D:\!!! WORK C\game\SDL2-2.30.10\include" -I\include 
 

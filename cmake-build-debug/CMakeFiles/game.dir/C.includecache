@@ -775,4 +775,8 @@ string.h
 -
 stdbool.h
 -
+stdlib.h
+-
+math.h
+-
 

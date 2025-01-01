@@ -7,6 +7,9 @@ unset(game CACHE)
 
 # Шлях до SDL2
 set(SDL2_PATH "${CMAKE_SOURCE_DIR}/SDL2-2.30.10")
+#set(SDL2_TTF_PATH "${CMAKE_SOURCE_DIR}/SDL2-2.30.10")
+
+
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(SDL2_LIB_PATH "${SDL2_PATH}/lib/x64")
@@ -21,6 +24,8 @@ add_executable(${PROJECT_NAME}
 # Додаємо шляхи до заголовочних файлів
 include_directories(
         "${SDL2_PATH}/include"
+        "${SDL2_TTF_PATH}/include"
+
 )
 
 # Лінкуємо бібліотеки (x64 версія, оскільки бачу що у вас є папка x64)
@@ -45,3 +50,8 @@ if(EXISTS "${SDL2_LIB_PATH}/SDL2.dll")
     file(COPY "${SDL2_LIB_PATH}/SDL2.dll"
             DESTINATION ${CMAKE_BINARY_DIR})
 endif()
+
+#if(EXISTS "${SDL2_TTF_PATH}/lib/${ARCH}/SDL2_ttf.dll")
+#    file(COPY "${SDL2_TTF_PATH}/lib/${ARCH}/SDL2_ttf.dll"
+#            DESTINATION ${CMAKE_BINARY_DIR})
+#endif()

@@ -1,9 +1,13 @@
 #include "SDL.h"
+//#include "SDL_ttf.h"
+//#include <SDL_ttf.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
+
+
 
 //const int WIDTH = 500;
 //const int HEIGHT = 500;
@@ -33,6 +37,9 @@
 #define BULLET_WIDTH 5
 #define BULLET_HEIGHT 10
 #define BULLET_SPEED 300
+#define WIN_SCORE 10
+#define MAX_MISSES 3
+//#define FONT_SIZE 24
 
 
 typedef struct Enemy {
@@ -66,6 +73,10 @@ Rocket rocket;
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
+
+//TTF_Font* font = NULL;
+int missedEnemies = 0;
+
 bool Initialize(void);
 void Update(float);
 void Shutdown(void);
@@ -81,6 +92,7 @@ void RenderBullets(void);
 void ShootBullet(void);
 bool CheckCollision(SDL_Rect a, SDL_Rect b);
 void ResetEnemy(Enemy* enemy);
+//void RenderText(const char* text, int x, int y, SDL_Color color);
 
 
 
@@ -114,31 +126,41 @@ int main(int argc, const char * argv[]) {
 }
 
 bool Initialize(void) {
+
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "SDL initialization failed: %s\n", SDL_GetError());
         return false;
     }
     window = SDL_CreateWindow("Shooter",
-                                          SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                          WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-        if (window == NULL) {
-            fprintf(stderr, "Window creation failed: %s\n", SDL_GetError());
-            SDL_Quit();
-            return false;
-        }
+                                      SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                      WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        fprintf(stderr, "Window creation failed: %s\n", SDL_GetError());
+        SDL_Quit();
+        return false;
+    }
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-        if (renderer == NULL) {
-            fprintf(stderr, "Renderer creation failed: %s\n", SDL_GetError());
-            SDL_DestroyWindow(window);
-            SDL_Quit();
-            return false;
-        }
+    if (renderer == NULL) {
+        fprintf(stderr, "Renderer creation failed: %s\n", SDL_GetError());
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return false;
+    }
+//    font = TTF_OpenFont("arial.ttf", FONT_SIZE);
+//    if (!font) {
+//        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
+//        return false;
+//    }
+//    if (TTF_Init() == -1) {
+//        fprintf(stderr, "TTF initialization failed: %s\n", TTF_GetError());
+//        return false;
+//    }
 
-        rocket = MakeRocket();
-        InitEnemies();
-        for (int i = 0; i < MAX_BULLETS; i++) {
-            bullets[i].active = false;
-        }
+    rocket = MakeRocket();
+    InitEnemies();
+    for (int i = 0; i < MAX_BULLETS; i++) {
+        bullets[i].active = false;
+    }
 
     return true;
 }
@@ -177,9 +199,32 @@ void Update(float elapsed) {
 
         UpdateRocket(elapsed);
         RenderRocket();
+        char scoreText[32];
+        sprintf(scoreText, "Score: %d", rocket.score);
+        SDL_Color textColor = {255, 255, 255, 255};
+//        RenderText(scoreText, WIDTH - 100, 10, textColor);
     }
     else {
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_Color textColor = {255, 255, 255, 255};
+        const char* message;
+
+        if (rocket.score >= WIN_SCORE) {
+            textColor.r = 0;
+            textColor.g = 255;
+            textColor.b = 0;
+            message = "YOU WIN!";
+            printf(message);
+        }
+        else {
+            textColor.r = 255;
+            textColor.g = 0;
+            textColor.b = 0;
+            message = "GAME OVER";
+            printf(message);
+        }
+
+
+//        RenderText(message, WIDTH/2 - 50, HEIGHT/2 - 20, textColor);
     }
 
     SDL_RenderPresent(renderer);
@@ -237,7 +282,7 @@ Enemy MakeEnemy(int xPos, int yPos){
             .width = ENEMY_WIDTH,
             .height = ENEMY_HEIGHT,
             .xSpeed = ENEMY_SPEED,
-            .ySpeed = ENEMY_SPEED/4
+            .ySpeed = ENEMY_SPEED/8
     };
     return enemy;
 };
@@ -253,7 +298,12 @@ void UpdateEnemy(Enemy *enemy, float elapsed) {
     }
     if (enemy->y > HEIGHT) {
         rocket.score--;
+        missedEnemies++;
         ResetEnemy(enemy);
+        printf(rocket.score);
+        if (missedEnemies >= MAX_MISSES) {
+            rocket.isAlive = false;
+        }
     }
 }
 
@@ -266,13 +316,13 @@ void RenderEnemy(Enemy *enemy) {
             .w = width,
             .h = height,
     };
-    SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+    SDL_SetRenderDrawColor(renderer, 255,125,125,255);
     SDL_RenderFillRect(renderer, &rect);
 }
 
 void InitEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
-        enemies[i] = MakeEnemy(100 + i * 80, -i * 50);
+        enemies[i] = MakeEnemy(100 + i *(rand() % 100), -i * 50);
     }
 }
 /*******************************************************************************************************/
@@ -327,7 +377,7 @@ void ShootBullet(void) {
     for (int i = 0; i < MAX_BULLETS; i++) {
         if (!bullets[i].active) {
             bullets[i].active = true;
-            bullets[i].x = rocket.xPos;
+            bullets[i].x = rocket.xPos-HERO_WIDTH/2;
             bullets[i].y = HEIGHT - HERO_HEIGHT;
             break;
         }
@@ -345,4 +395,26 @@ void ResetEnemy(Enemy* enemy) {
     enemy->x = rand() % (WIDTH - ENEMY_WIDTH) + ENEMY_WIDTH/2;
 }
 
-
+//void RenderText(const char* text, int x, int y, SDL_Color color) {
+//    SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
+//    if (!surface) {
+//        return;
+//    }
+//
+//    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+//    if (!texture) {
+//        SDL_FreeSurface(surface);
+//        return;
+//    }
+//
+//    SDL_Rect rect = {
+//            .x = x,
+//            .y = y,
+//            .w = surface->w,
+//            .h = surface->h
+//    };
+//
+//    SDL_RenderCopy(renderer, texture, NULL, &rect);
+//    SDL_FreeSurface(surface);
+//    SDL_DestroyTexture(texture);
+//}
