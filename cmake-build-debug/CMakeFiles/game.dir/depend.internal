@@ -59,6 +59,7 @@ CMakeFiles/game.dir/main.c.obj
  ../SDL2-2.30.10/include/SDL_thread.h
  ../SDL2-2.30.10/include/SDL_timer.h
  ../SDL2-2.30.10/include/SDL_touch.h
+ ../SDL2-2.30.10/include/SDL_ttf.h
  ../SDL2-2.30.10/include/SDL_version.h
  ../SDL2-2.30.10/include/SDL_video.h
  ../SDL2-2.30.10/include/begin_code.h

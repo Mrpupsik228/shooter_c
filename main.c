@@ -1,5 +1,5 @@
 #include "SDL.h"
-//#include "SDL_ttf.h"
+#include "SDL_ttf.h"
 //#include <SDL_ttf.h>
 #include <stdio.h>
 #include <string.h>
@@ -39,8 +39,16 @@
 #define BULLET_SPEED 300
 #define WIN_SCORE 10
 #define MAX_MISSES 3
-//#define FONT_SIZE 24
+#define FONT_SIZE 24
+#define FONT_SIZE 24
 
+typedef struct App{
+    SDL_Renderer *renderer;
+    SDL_Window *window;
+    TTF_Font *font;
+} App;
+
+App app;
 
 typedef struct Enemy {
     float x;
@@ -74,8 +82,9 @@ Rocket rocket;
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 
-//TTF_Font* font = NULL;
+TTF_Font* font = NULL;
 int missedEnemies = 0;
+
 
 bool Initialize(void);
 void Update(float);
@@ -92,7 +101,7 @@ void RenderBullets(void);
 void ShootBullet(void);
 bool CheckCollision(SDL_Rect a, SDL_Rect b);
 void ResetEnemy(Enemy* enemy);
-//void RenderText(const char* text, int x, int y, SDL_Color color);
+void RenderText(const char* text, int x, int y, SDL_Color color);
 
 
 
@@ -146,16 +155,16 @@ bool Initialize(void) {
         SDL_Quit();
         return false;
     }
-//    font = TTF_OpenFont("arial.ttf", FONT_SIZE);
-//    if (!font) {
-//        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
-//        return false;
-//    }
-//    if (TTF_Init() == -1) {
-//        fprintf(stderr, "TTF initialization failed: %s\n", TTF_GetError());
-//        return false;
-//    }
+    if (TTF_Init() == -1) {
+        fprintf(stderr, "TTF initialization failed: %s\n", TTF_GetError());
+        return false;
+    }
+    font = TTF_OpenFont("D:/!!! WORK C/game/arial.ttf", FONT_SIZE);
+    if (!font) {
+        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
+        return false;
 
+    }
     rocket = MakeRocket();
     InitEnemies();
     for (int i = 0; i < MAX_BULLETS; i++) {
@@ -192,6 +201,10 @@ void Update(float elapsed) {
             if (CheckCollision(enemyRect, playerRect)) {
                 rocket.isAlive = false;
             }
+            if (rocket.score >= WIN_SCORE) {
+                rocket.isAlive = false;
+
+            }
         }
 
         UpdateBullets(elapsed);
@@ -202,7 +215,7 @@ void Update(float elapsed) {
         char scoreText[32];
         sprintf(scoreText, "Score: %d", rocket.score);
         SDL_Color textColor = {255, 255, 255, 255};
-//        RenderText(scoreText, WIDTH - 100, 10, textColor);
+        RenderText(scoreText, WIDTH - 100, 10, textColor);
     }
     else {
         SDL_Color textColor = {255, 255, 255, 255};
@@ -213,18 +226,15 @@ void Update(float elapsed) {
             textColor.g = 255;
             textColor.b = 0;
             message = "YOU WIN!";
-            printf(message);
         }
         else {
             textColor.r = 255;
             textColor.g = 0;
             textColor.b = 0;
             message = "GAME OVER";
-            printf(message);
         }
 
-
-//        RenderText(message, WIDTH/2 - 50, HEIGHT/2 - 20, textColor);
+        RenderText(message, WIDTH/2 - 50, HEIGHT/2 - 20, textColor);
     }
 
     SDL_RenderPresent(renderer);
@@ -395,26 +405,26 @@ void ResetEnemy(Enemy* enemy) {
     enemy->x = rand() % (WIDTH - ENEMY_WIDTH) + ENEMY_WIDTH/2;
 }
 
-//void RenderText(const char* text, int x, int y, SDL_Color color) {
-//    SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
-//    if (!surface) {
-//        return;
-//    }
-//
-//    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-//    if (!texture) {
-//        SDL_FreeSurface(surface);
-//        return;
-//    }
-//
-//    SDL_Rect rect = {
-//            .x = x,
-//            .y = y,
-//            .w = surface->w,
-//            .h = surface->h
-//    };
-//
-//    SDL_RenderCopy(renderer, texture, NULL, &rect);
-//    SDL_FreeSurface(surface);
-//    SDL_DestroyTexture(texture);
-//}
+void RenderText(const char* text, int x, int y, SDL_Color color) {
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
+    if (!surface) {
+        return;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (!texture) {
+        SDL_FreeSurface(surface);
+        return;
+    }
+
+    SDL_Rect rect = {
+            .x = x,
+            .y = y,
+            .w = surface->w,
+            .h = surface->h
+    };
+
+    SDL_RenderCopy(renderer, texture, NULL, &rect);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+}

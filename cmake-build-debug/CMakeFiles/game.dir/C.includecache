@@ -740,6 +740,14 @@ begin_code.h
 close_code.h
 ../SDL2-2.30.10/include/close_code.h
 
+../SDL2-2.30.10/include/SDL_ttf.h
+SDL.h
+../SDL2-2.30.10/include/SDL.h
+begin_code.h
+../SDL2-2.30.10/include/begin_code.h
+close_code.h
+../SDL2-2.30.10/include/close_code.h
+
 ../SDL2-2.30.10/include/SDL_version.h
 SDL_stdinc.h
 ../SDL2-2.30.10/include/SDL_stdinc.h
@@ -769,6 +777,8 @@ close_code.h
 D:/!!! WORK C/game/main.c
 SDL.h
 D:/!!! WORK C/game/SDL.h
+SDL_ttf.h
+D:/!!! WORK C/game/SDL_ttf.h
 stdio.h
 -
 string.h

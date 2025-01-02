@@ -11,7 +11,7 @@ set(CMAKE_C_COMPILER_ID "MSVC")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../SDL2-2.30.10/include"
-  "/include"
+  "../SDL2_ttf-2.20.2/include"
   )
 
 # Targets to which this target links.

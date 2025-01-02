@@ -26,24 +26,24 @@ The C compiler identification is MSVC, found in "D:/!!! WORK C/game/cmake-build-
 Determining if the C compiler works passed with the following output:
 Change Dir: D:/!!! WORK C/game/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_9108d\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_9108d.dir\build.make /nologo -L                  CMakeFiles\cmTC_9108d.dir\build
-Building C object CMakeFiles/cmTC_9108d.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nmE64C.tmp
+Run Build Command(s):nmake /nologo cmTC_f8896\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_f8896.dir\build.make /nologo -L                  CMakeFiles\cmTC_f8896.dir\build
+Building C object CMakeFiles/cmTC_f8896.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nm1835.tmp
 testCCompiler.c
-Linking C executable cmTC_9108d.exe
-	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_9108d.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_9108d.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nmE6AB.tmp
+Linking C executable cmTC_f8896.exe
+	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_f8896.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_f8896.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nm1884.tmp
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/!!! WORK C/game/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_b5822\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b5822.dir\build.make /nologo -L                  CMakeFiles\cmTC_b5822.dir\build
-Building C object CMakeFiles/cmTC_b5822.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nmE8DC.tmp
+Run Build Command(s):nmake /nologo cmTC_020f7\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_020f7.dir\build.make /nologo -L                  CMakeFiles\cmTC_020f7.dir\build
+Building C object CMakeFiles/cmTC_020f7.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @C:\Users\roman\AppData\Local\Temp\nm1B04.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_b5822.exe
-	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_b5822.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_b5822.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nmE96A.tmp
+Linking C executable cmTC_020f7.exe
+	"F:\JetBrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_020f7.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100226~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_020f7.dir\objects1.rsp @C:\Users\roman\AppData\Local\Temp\nm1BA1.tmp
 
 
 

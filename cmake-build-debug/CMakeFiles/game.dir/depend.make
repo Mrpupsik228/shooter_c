@@ -58,6 +58,7 @@ CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_system.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_thread.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_timer.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_touch.h
+CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_ttf.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_version.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\SDL_video.h
 CMakeFiles\game.dir\main.c.obj: ..\SDL2-2.30.10\include\begin_code.h
