@@ -32,7 +32,7 @@
 #define ENEMY_WIDTH 40
 #define ENEMY_HEIGHT 20
 #define ENEMY_SPEED 80
-#define MAX_ENEMIES 5
+#define MAX_ENEMIES 10
 #define MAX_BULLETS 10
 #define BULLET_WIDTH 5
 #define BULLET_HEIGHT 10
@@ -42,13 +42,7 @@
 #define FONT_SIZE 24
 #define FONT_SIZE 24
 
-typedef struct App{
-    SDL_Renderer *renderer;
-    SDL_Window *window;
-    TTF_Font *font;
-} App;
 
-App app;
 
 typedef struct Enemy {
     float x;
@@ -159,7 +153,7 @@ bool Initialize(void) {
         fprintf(stderr, "TTF initialization failed: %s\n", TTF_GetError());
         return false;
     }
-    font = TTF_OpenFont("D:/!!! WORK C/game/arial.ttf", FONT_SIZE);
+    font = TTF_OpenFont("../arial.ttf", FONT_SIZE);
     if (!font) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return false;
