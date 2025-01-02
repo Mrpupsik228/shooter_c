@@ -326,7 +326,7 @@ void RenderEnemy(Enemy *enemy) {
 
 void InitEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
-        enemies[i] = MakeEnemy(100 + i *(rand() % 100), -i * 50);
+        enemies[i] = MakeEnemy(100 + i *(rand() % WIDTH), -i * 50);
     }
 }
 /*******************************************************************************************************/
